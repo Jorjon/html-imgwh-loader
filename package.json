@@ -1,0 +1,15 @@
+{
+  "name": "html-imgwh-loader",
+  "version": "0.1.1",
+  "description": "automatically add width/height attributes to img tags",
+  "author": "Jorjon <jorjon@jorjon.com>",
+  "license": "MIT",
+  "dependencies": {
+    "fastparse": "^1.1.1",
+    "loader-utils": "^1.1.0",
+    "image-size": "^0.6.2"
+  },
+  "homepage": "https://github.com/Jorjon/html-imgwh-loader",
+  "repository": "https://github.com/Jorjon/html-imgwh-loader",
+  "bugs": "https://github.com/Jorjon/html-imgwh-loader/issues"
+}
