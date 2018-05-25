@@ -4,15 +4,25 @@
 */
 var Parser = require("fastparse");
 
-var processMatch = function (match, strUntilValue, name, value, index) {
-    if (!this.isRelevantTagAttr(this.currentTag, name)) return;
-    this.results.push({
-        tag: this.currentTag,
-        tagStart: this.currentTagIndex,
+var processAttr = function (match, strUntilValue, attributeName, attributeValue, index) {
+    if (!this.isRelevantTagAttr(this.currentTag.name, attributeName)) return;
+    this.currentTag.attrs.push({
+        name: attributeName,
         start: index + strUntilValue.length,
-        length: value.length,
-        value: value
+        length: attributeValue.length,
+        value: attributeValue,
     });
+};
+
+var leaveMatch = function (match) {
+    if (this.currentTag.attrs.length > 0) {
+        this.results.push({
+            tag: this.currentTag.name,
+            tagStart: this.currentTagIndex,
+            attrs: this.currentTag.attrs,
+        });
+    }
+    return "outside";
 };
 
 var parser = new Parser({
@@ -23,16 +33,16 @@ var parser = new Parser({
         "<\/[^>]+>": true,
         "<([a-zA-Z\\-:]+)\\s*": function (match, tagName, index) {
             this.currentTagIndex = index + 1; // +1 to skip < character
-            this.currentTag = tagName;
+            this.currentTag = {name: tagName, attrs: []};
             return "inside";
         }
     },
     inside: {
         "\\s+": true, // eat up whitespace
-        ">": "outside", // end of attributes
-        "(([0-9a-zA-Z\\-:]+)\\s*=\\s*\")([^\"]*)\"": processMatch,
-        "(([0-9a-zA-Z\\-:]+)\\s*=\\s*\')([^\']*)\'": processMatch,
-        "(([0-9a-zA-Z\\-:]+)\\s*=\\s*)([^\\s>]+)": processMatch
+        ">": leaveMatch, // end of attributes
+        "(([0-9a-zA-Z\\-:]+)\\s*=\\s*\")([^\"]*)\"": processAttr,
+        "(([0-9a-zA-Z\\-:]+)\\s*=\\s*\')([^\']*)\'": processAttr,
+        "(([0-9a-zA-Z\\-:]+)\\s*=\\s*)([^\\s>]+)": processAttr
     }
 });
 

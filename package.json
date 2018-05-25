@@ -1,6 +1,6 @@
 {
   "name": "html-imgwh-loader",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "automatically add width/height attributes to img tags",
   "license": "MIT",
   "repository": "Jorjon/html-imgwh-loader",

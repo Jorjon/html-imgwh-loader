@@ -9,7 +9,7 @@ function test(name, html, result) {
             if (tag === "use" && attr === "xlink:href") return true;
             return false;
         }).map(function (match) {
-            return match.value
+            return match.attrs[0].value
         })).toEqual(result);
     });
 }
@@ -37,11 +37,14 @@ describe("parser", () => {
 describe("locations", function () {
     it("should report correct locations", function () {
         expect(parser('<img  src= "image.png">', () => true)).toEqual([{
-            start: 12,
-            length: 9,
-            value: "image.png",
-            tag: "img",
+            attrs: [{
+                start: 12,
+                length: 9,
+                value: "image.png",
+                name: "src",
+            }],
             tagStart: 1,
+            tag: "img",
         }]);
     });
 });
