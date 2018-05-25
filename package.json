@@ -1,15 +1,32 @@
 {
   "name": "html-imgwh-loader",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "automatically add width/height attributes to img tags",
-  "author": "Jorjon <jorjon@jorjon.com>",
   "license": "MIT",
+  "repository": "Jorjon/html-imgwh-loader",
+  "author": "Jorjon <jorjon@jorjon.com>",
+  "homepage": "https://github.com/Jorjon/html-imgwh-loader",
+  "bugs": "https://github.com/Jorjon/html-imgwh-loader/issues",
+  "engines": {
+    "node": ">= 6.9.0 <7.0.0 || >= 8.9.0"
+  },
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "test:upgrade": "npm test -- -u"
+  },
   "dependencies": {
     "fastparse": "^1.1.1",
-    "loader-utils": "^1.1.0",
-    "image-size": "^0.6.2"
+    "image-size": "^0.6.2",
+    "loader-utils": "^1.1.0"
   },
-  "homepage": "https://github.com/Jorjon/html-imgwh-loader",
-  "repository": "https://github.com/Jorjon/html-imgwh-loader",
-  "bugs": "https://github.com/Jorjon/html-imgwh-loader/issues"
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "jest": "^23.0.0"
+  },
+  "keywords": [
+    "webpack", "image-processing"
+  ]
 }

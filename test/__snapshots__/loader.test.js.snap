@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loader image.png should have proper width/height attributes 1`] = `"<img width=\\"240\\" height=\\"240\\" src=\\"image.png\\"/>"`;
+
+exports[`Loader should not add height if it is already present 1`] = `"<img width=\\"240\\" src=\\"image.png\\" height=\\"50\\"/>"`;
+
+exports[`Loader should not add width if it is already present 1`] = `"<img height=\\"240\\" src=\\"image.png\\" width=\\"50\\"/>"`;
