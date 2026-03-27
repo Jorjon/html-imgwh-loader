@@ -19,7 +19,7 @@
   "dependencies": {
     "fastparse": "^1.1.1",
     "image-size": "^0.6.2",
-    "loader-utils": "^1.1.0"
+    "loader-utils": "^3.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
